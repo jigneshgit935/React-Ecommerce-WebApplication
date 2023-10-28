@@ -4,6 +4,7 @@ import {
   deleteUserById,
   getAllUser,
   getCurrentUserProfile,
+  getUserById,
   loginUser,
   logoutCurrentUser,
   updateCurrentUserProfile,
@@ -24,6 +25,9 @@ router
   .put(authenticate, updateCurrentUserProfile);
 
 //Admin routes
-router.route('/:id').delete(authenticate, authorizeAdmin, deleteUserById);
+router
+  .route('/:id')
+  .delete(authenticate, authorizeAdmin, deleteUserById)
+  .get(authenticate, authorizeAdmin, getUserById);
 
 export default router;
