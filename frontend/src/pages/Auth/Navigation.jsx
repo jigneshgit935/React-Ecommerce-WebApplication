@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './Navigation.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { useLoginMutation } from '../../redux/api/usersApiSlice';
+import { useLogoutMutation } from '../../redux/api/usersApiSlice';
 import { logout } from '../../redux/features/auth/authSlice';
 
 const Navigation = () => {
@@ -35,7 +35,7 @@ const Navigation = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [logoutApiCall] = useLoginMutation();
+  const [logoutApiCall] = useLogoutMutation();
 
   const logoutHandler = async () => {
     try {
@@ -167,25 +167,25 @@ const Navigation = () => {
                     Users
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    to="/admin/profile"
-                    className="block px-4 py-2 hover:bg-gray-100"
-                  >
-                    Profile
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/admin/logout"
-                    onClick={logoutHandler}
-                    className="block px-4 py-2 hover:bg-gray-100"
-                  >
-                    Logout
-                  </Link>
-                </li>
               </>
             )}
+            <li>
+              <Link
+                to="/admin/profile"
+                className="block px-4 py-2 hover:bg-gray-100"
+              >
+                Profile
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/admin/logout"
+                onClick={logoutHandler}
+                className="block px-4 py-2 hover:bg-gray-100"
+              >
+                Logout
+              </Link>
+            </li>
           </ul>
         )}
       </div>
